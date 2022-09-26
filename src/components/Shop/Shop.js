@@ -14,13 +14,27 @@ const Shop = () => {
             .then(data => setProducts(data));
     }, []);
 
-    const addToCart = (product) => {
-        if (product.quantity === 0) {
-            product.quantity = 1;
+    const addToCart = (selectedProduct) => {
+        /* my code
+        if (selectedProduct.quantity === 0) {
+            selectedProduct.quantity = 1;
         }
-        const newCart = [...cart, product];
+        const newCart = [...cart, selectedProduct]; */
+
+        let newCart = [];
+        const exists = cart.find(product => product.id === selectedProduct.id);
+        if (!exists) {
+            selectedProduct.quantity = 1;
+            newCart = [...cart, selectedProduct];
+        }
+        else {
+            const rest = cart.filter(product => product.id !== selectedProduct.id);
+            // exists.quantity = exists.quantity + 1;
+            newCart = [...rest, exists];
+        }
+
         setCart(newCart);
-        addToDb(product.id);
+        addToDb(selectedProduct.id);
     }
 
     useEffect(() => {
