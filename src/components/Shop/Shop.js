@@ -15,6 +15,9 @@ const Shop = () => {
     }, []);
 
     const addToCart = (product) => {
+        if (product.quantity === 0) {
+            product.quantity = 1;
+        }
         const newCart = [...cart, product];
         setCart(newCart);
         addToDb(product.id);
