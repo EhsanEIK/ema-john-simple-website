@@ -15,12 +15,6 @@ const Shop = () => {
     }, []);
 
     const addToCart = (selectedProduct) => {
-        /* my code
-        if (selectedProduct.quantity === 0) {
-            selectedProduct.quantity = 1;
-        }
-        const newCart = [...cart, selectedProduct]; */
-
         let newCart = [];
         const exists = cart.find(product => product.id === selectedProduct.id);
         if (!exists) {
@@ -29,7 +23,7 @@ const Shop = () => {
         }
         else {
             const rest = cart.filter(product => product.id !== selectedProduct.id);
-            // exists.quantity = exists.quantity + 1;
+            exists.quantity = exists.quantity + 1;
             newCart = [...rest, exists];
         }
 
