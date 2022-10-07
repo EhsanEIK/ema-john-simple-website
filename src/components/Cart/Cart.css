@@ -2,3 +2,23 @@
     position: sticky;
     top: 0;
 }
+
+.btn-clear-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: #FF3030;
+    border: 0;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btn-clear-cart:hover {
+    cursor: pointer;
+    background: #c92121;
+}
+
+.btn-clear-cart p {
+    margin-right: 10px;
+}
