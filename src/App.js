@@ -11,8 +11,16 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/', element: <Main></Main>, children: [
-        { path: '/', element: <Shop></Shop> },
-        { path: '/orders', element: <Orders></Orders> },
+        {
+          path: '/',
+          loader: () => fetch('products.json'),
+          element: <Shop></Shop>
+        },
+        {
+          path: '/orders',
+          loader: () => fetch('products.json'),
+          element: <Orders></Orders>
+        },
         { path: '/inventory', element: <Inventory></Inventory> },
         { path: '/about', element: <About></About> },
         { path: '*', element: <div>ERROR 404 FOUND!!!</div> },
