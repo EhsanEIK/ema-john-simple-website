@@ -3,8 +3,8 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import React from 'react';
 import './ReviewItem.css';
 
-const ReviewItem = ({ product }) => {
-    const { img, name, price, quantity, shipping } = product;
+const ReviewItem = ({ product, handleRemoveItem }) => {
+    const { id, img, name, price, quantity, shipping } = product;
     return (
         <div className='review-item-container'>
             <img src={img} alt={name} />
@@ -16,7 +16,7 @@ const ReviewItem = ({ product }) => {
                     <p>Shipping: {shipping}</p>
                 </div>
                 <div>
-                    <button className='btn-delete'>
+                    <button onClick={() => handleRemoveItem(id)} className='btn-delete'>
                         <FontAwesomeIcon className='btn-delete-icon' icon={faTrashAlt}></FontAwesomeIcon>
                     </button>
                 </div>
