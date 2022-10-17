@@ -17,3 +17,7 @@
 .header a:hover {
     color: orange;
 }
+
+.user-name {
+    color: white;
+}
