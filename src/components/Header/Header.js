@@ -5,19 +5,27 @@ import logo from '../../images/Logo.svg'
 import './Header.css'
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut().then(r => { }).catch(error => console.error(error));
+    }
 
     return (
         <nav className='header'>
             <img src={logo} alt="logo" />
-            <p className='user-name'>Welcome, {user}</p>
             <div>
                 <Link to="/">Shop</Link>
                 <Link to="/orders">Orders</Link>
                 <Link to="/inventory">Inventory</Link>
                 <Link to="/about">About</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/signup">Sign Up</Link>
+                {user?.email ? <input onClick={handleLogout} type="submit" value="Log Out" />
+                    : <>
+                        <Link to="/login">Login</Link>
+                        <Link to="/signup">Sign Up</Link>
+                    </>
+                }
+                <p className='user-name'>Welcome, {user?.email || user?.displayName}</p>
             </div>
         </nav>
     );
