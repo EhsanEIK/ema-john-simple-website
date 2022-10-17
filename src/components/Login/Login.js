@@ -20,6 +20,7 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 setSuccessMsg("Login Successfully");
+                form.reset();
             })
             .catch(error => setErrorMsg(error.message));
     }

@@ -19,13 +19,15 @@ const Header = () => {
                 <Link to="/orders">Orders</Link>
                 <Link to="/inventory">Inventory</Link>
                 <Link to="/about">About</Link>
-                {user?.email ? <input onClick={handleLogout} type="submit" value="Log Out" />
+                {user?.email ? <>
+                    <input onClick={handleLogout} type="submit" value="Log Out" />
+                    <p className='user-name'>Welcome, {user?.email || user?.displayName}</p>
+                </>
                     : <>
                         <Link to="/login">Login</Link>
                         <Link to="/signup">Sign Up</Link>
                     </>
                 }
-                <p className='user-name'>Welcome, {user?.email || user?.displayName}</p>
             </div>
         </nav>
     );

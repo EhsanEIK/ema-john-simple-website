@@ -30,6 +30,7 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 setSuccessMsg("User Created Successfully");
+                form.reset();
             })
             .catch(error => setErrorMsg(error.message));
     }
