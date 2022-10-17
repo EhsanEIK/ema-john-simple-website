@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import './Login.css';
 
@@ -7,6 +7,7 @@ const Login = () => {
     const { logIn } = useContext(AuthContext);
     const [successMsg, setSuccessMsg] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmitLogin = event => {
         event.preventDefault();
@@ -21,6 +22,7 @@ const Login = () => {
             .then(result => {
                 setSuccessMsg("Login Successfully");
                 form.reset();
+                navigate('/');
             })
             .catch(error => setErrorMsg(error.message));
     }
