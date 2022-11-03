@@ -13,11 +13,21 @@ currentPage = (page)
  */
 
 const Shop = () => {
-    const { products, count } = useLoaderData();
+    // const { products, count } = useLoaderData();
     const [cart, setCart] = useState([]);
-
+    const [products, setProducts] = useState([]);
+    const [count, setCount] = useState([]);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/products?page=${page}&size=${size}`)
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data.products);
+                setCount(data.count);
+            })
+    }, [page, size])
 
     const pages = Math.ceil(count / size);
 
