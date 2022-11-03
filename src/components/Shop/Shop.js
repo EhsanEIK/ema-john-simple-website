@@ -78,7 +78,7 @@ const Shop = () => {
                 </Cart>
             </div>
             <div className='pagination'>
-                <h4>Current Page: {page + 1}</h4>
+                <h4>Current Page: {page + 1} & Size: {size}</h4>
                 {
                     [...Array(pages).keys()].map(number =>
                         <button key={number}
@@ -87,8 +87,15 @@ const Shop = () => {
                             {number + 1}
                         </button>)
                 }
+                <select onChange={event => setSize(event.target.value)}>
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                </select>
             </div>
-        </div>
+        </div >
     );
 };
 
