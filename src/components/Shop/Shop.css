@@ -18,6 +18,24 @@
     padding-left: 20px;
 }
 
+.pagination {
+    margin: 20px auto;
+}
+
+.pagination h4 {
+    text-align: center;
+}
+
+.pagination button {
+    margin-right: 5px;
+}
+
+.pagination .selected {
+    background-color: goldenrod;
+    border-color: goldenrod;
+    padding: 8px;
+}
+
 @media screen and (max-width:1400px) {
     .products-container {
         grid-template-columns: repeat(2, 1fr);

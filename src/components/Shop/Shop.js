@@ -5,9 +5,21 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
 
+/* 
+count: 76 (from db),
+size: 10 (static)
+pages: count/size
+currentPage = (page)
+ */
+
 const Shop = () => {
-    const products = useLoaderData();
+    const { products, count } = useLoaderData();
     const [cart, setCart] = useState([]);
+
+    const [page, setPage] = useState(0);
+    const [size, setSize] = useState(10);
+
+    const pages = Math.ceil(count / size);
 
     const clearCart = () => {
         setCart([]);
@@ -64,6 +76,17 @@ const Shop = () => {
                         <button>Review Order</button>
                     </Link>
                 </Cart>
+            </div>
+            <div className='pagination'>
+                <h4>Current Page: {page + 1}</h4>
+                {
+                    [...Array(pages).keys()].map(number =>
+                        <button key={number}
+                            onClick={() => setPage(number)}
+                            className={page === number ? 'selected' : ''}>
+                            {number + 1}
+                        </button>)
+                }
             </div>
         </div>
     );
